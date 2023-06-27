@@ -8,7 +8,18 @@
 */
 
 function isAnagram(str1, str2) {
-
+  let alphaDict = {};
+  for (let alpha of str1) {
+    alphaDict[alpha] = alphaDict[alpha] + 1 || 1;
+  }
+  for (let alpha of str2) {
+    if (alphaDict[alpha] > 0) {
+      alphaDict[alpha] -= 1;
+    } else {
+      return false;
+    }
+  }
+  return true;
 }
 
 module.exports = isAnagram;
