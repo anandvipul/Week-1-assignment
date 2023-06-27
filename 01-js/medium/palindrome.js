@@ -6,7 +6,24 @@
   - `npm run test-palindrome`
 */
 
-function isPalindrome(str) {
+function isPalindrome(str1) {
+  let str = str1
+    .toLowerCase()
+    .replaceAll(/\s/g, '')
+    .replaceAll(/[^\w\s]/g, '');
+  if (str.length === 1) {
+    return true;
+  }
+  if (str.length === 2) {
+    return str[0] === str[1];
+  }
+  if (str.length > 2) {
+    if (str[str.length - 1] === str[0]) {
+      return isPalindrome(str.slice(1, -1));
+    } else {
+      return false;
+    }
+  }
   return true;
 }
 
