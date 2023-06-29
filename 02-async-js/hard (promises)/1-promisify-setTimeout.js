@@ -3,4 +3,7 @@
 */
 
 function wait(n) {
+  return new Promise((resolve) => {
+    setTimeout(resolve(`Resolved in ${n} milliseconds`), n);
+  });
 }
