@@ -30,10 +30,17 @@ function waitThreeSecond() {
 
 async function calculateTime() {
   console.log('Started the sequential Code');
-  await waitOneSecond().then(console.log);
-  await waitTwoSecond().then(console.log);
-  await waitThreeSecond().then(console.log);
+  let startTime = performance.now();
+  let endTime = 0;
+  Promise.all([waitOneSecond(), waitTwoSecond(), waitThreeSecond()]).then(
+    (values) => {
+      console.log(values);
+      endTime = performance.now();
+      console.log(endTime - startTime);
+    }
+  );
   console.log('Finished the code execution');
 }
 
 calculateTime();
+// 3014 ms
