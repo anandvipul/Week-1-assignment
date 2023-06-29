@@ -6,17 +6,38 @@
  */
 
 function waitOneSecond() {
-
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('One Second');
+    }, 1000);
+  });
 }
 
 function waitTwoSecond() {
-
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('Two Seconds');
+    }, 2000);
+  });
 }
 
 function waitThreeSecond() {
-
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('Three Seconds');
+    }, 3000);
+  });
 }
 
-function calculateTime() {
-
+async function calculateTime() {
+  console.log('Starting Execution');
+  let startTime = performance.now();
+  await waitOneSecond().then(console.log);
+  await waitTwoSecond().then(console.log);
+  await waitThreeSecond().then((data) => {
+    console.log(data);
+    console.log(performance.now() - startTime);
+  });
 }
+calculateTime();
+// execution time 6006 milliseconds
